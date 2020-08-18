@@ -7,8 +7,11 @@ use App\User;
 
 class Post extends Model
 {
+
+    protected $guarded = [];
+
     public function user()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class)->orderBy('created_at', 'DESC');
     }
 }
