@@ -7,10 +7,14 @@
             <img src="#" class="rounded-circle w-100">
         </div>
         <div class="col-9 pt-5">
+          <div class="d-flex justify-content-between align-items-baseline">
+            <h1>{{ $user->name }}</h1>
+          </div>
 
-
-
+              @can ('update', $user->profile)
                 <a href="/profiles/{{ $user->id }}/edit">Edit Profile</a>
+              @endcan
+
 
 
             <div class="d-flex">
