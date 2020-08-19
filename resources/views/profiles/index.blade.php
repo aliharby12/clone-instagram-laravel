@@ -4,23 +4,30 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img src="#" class="rounded-circle w-100">
+            <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100" style="width:auto;height:200px">
         </div>
         <div class="col-9 pt-5">
-          <div class="d-flex justify-content-between align-items-baseline">
-            <h1>{{ $user->name }}</h1>
-          </div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <div class="d-flex align-items-center pb-3">
+                    <div class="h4">{{ $user->name }}</div>
 
-              @can ('update', $user->profile)
+                    <follow-button user-id="#" follows="#"></follow-button>
+                </div>
+
+                @can('update', $user->profile)
+                    <a href="/p/create">Add New Post</a>
+                @endcan
+
+            </div>
+
+            @can('update', $user->profile)
                 <a href="/profiles/{{ $user->id }}/edit">Edit Profile</a>
-              @endcan
-
-
+            @endcan
 
             <div class="d-flex">
-                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="pr-5"><strong>55K</strong> followers</div>
-                <div class="pr-5"><strong>500</strong> following</div>
+                <div class="pr-5"><strong>4</strong> posts</div>
+                <div class="pr-5"><strong>40k</strong> followers</div>
+                <div class="pr-5"><strong>40k</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
