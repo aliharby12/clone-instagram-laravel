@@ -9,9 +9,9 @@
         <div class="col-9 pt-5">
 
 
-            @can('update', $user->profile)
-                <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endcan
+
+                <a href="/profiles/{{ $user->id }}/edit">Edit Profile</a>
+
 
             <div class="d-flex">
                 <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
