@@ -9,9 +9,11 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center pb-3">
-                    <div class="h4">{{ $user->name }}</div>
+                    <div class="h4">
+                      {{ $user->name }}
+                    </div>
 
-                    <follow-button user-id="#" follows="#"></follow-button>
+                    <follow-button user-id="{{ $user->id }}"></follow-button>
                 </div>
 
                 @can('update', $user->profile)
