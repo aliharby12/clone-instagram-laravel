@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100" style="width:auto;height:200px">
+            <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-100" style="width:auto;height:200px">
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
@@ -25,7 +25,7 @@
             @endcan
 
             <div class="d-flex">
-                <div class="pr-5"><strong>4</strong> posts</div>
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-5"><strong>40k</strong> followers</div>
                 <div class="pr-5"><strong>40k</strong> following</div>
             </div>
