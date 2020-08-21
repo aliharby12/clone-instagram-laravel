@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Profile;
 use App\Post;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -47,10 +48,15 @@ class User extends Authenticatable
         ]);
       });
     }
-    
+
     public function profile()
     {
       return $this->hasOne(Profile::class);
+    }
+
+    public function following()
+    {
+      return $this->belongsToMany(Profile::class);
     }
 
     public function posts()

@@ -13,7 +13,7 @@
                       {{ $user->name }}
                     </div>
 
-                    <follow-button user-id="{{ $user->id }}"></follow-button>
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
 
                 @can('update', $user->profile)
@@ -27,9 +27,9 @@
             @endcan
 
             <div class="d-flex">
-                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="pr-5"><strong>40k</strong> followers</div>
-                <div class="pr-5"><strong>40k</strong> following</div>
+                <div class="pr-5"><strong>{{ $postCount }}</strong> posts</div>
+                <div class="pr-5"><strong>{{ $followersCount }}</strong> followers</div>
+                <div class="pr-5"><strong>{{ $followingCount }}</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
@@ -38,13 +38,17 @@
     </div>
 
     <div class="row pt-5">
-        @foreach($user->posts as $post)
-            <div class="col-4 pb-4">
-                <a href="/p/{{ $post->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-100 rounded-circle">
-                </a>
-            </div>
-        @endforeach
+        @forelse ($user->posts as $post)
+          <div class="col-4 pb-4">
+              <a href="/p/{{ $post->id }}">
+                  <img src="/storage/{{ $post->image }}" class="w-100 rounded-circle">
+              </a>
+          </div>
+        @empty
+          <div class="justify-content-center">
+            <h6>User Has No Posts Yet!</h6>
+          </div>
+        @endforelse
     </div>
 </div>
 @endsection
